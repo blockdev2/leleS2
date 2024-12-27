@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para minha princesa!</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1 {
+            margin-top: 20%;
+            color: #ff66b2;
+            font-size: 2.5em;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #ff66b2;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff3385;
+        }
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff66b2;
+            box-shadow: 
+                -15px -15px 0 0 #ff99cc,
+                15px -15px 0 0 #ff99cc,
+                -15px 15px 0 0 #ff99cc,
+                15px 15px 0 0 #ff99cc;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Aperte Aqui!</h1>
+    <button id="btn">S2</button>
+
+    <script>
+        const btn = document.getElementById('btn');
+        let pressTimer;
+
+        btn.addEventListener('click', () => {
+            for (let i = 0; i < 50; i++) {
+                createFlower();
+            }
+        });
+
+        btn.addEventListener('mousedown', () => {
+            pressTimer = setTimeout(() => {
+                window.location.href = '/s2'; 
+            }, 5000);
+        });
+
+        btn.addEventListener('mouseup', () => {
+            clearTimeout(pressTimer);
+        });
+
+        btn.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(() => {
+                window.location.href = '/s2';
+            }, 5000);
+        });
+
+        btn.addEventListener('touchend', () => {
+            clearTimeout(pressTimer);
+        });
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+
+            const size = Math.random() * 20 + 10;
+            flower.style.width = size + 'px';
+            flower.style.height = size + 'px';
+
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
