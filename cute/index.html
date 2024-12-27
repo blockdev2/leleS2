@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #ffe6f2;
-            font-family: 'Lucida Handwriting', cursive;
+            font-family: 'Patrick Hand', cursive;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -30,18 +31,6 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-            margin: 10px;
-            position: relative;
-        }
-        button:hover {
-            background-color: #ff3385;
-        }
-        #message {
-            color: #ff66b2;
-            font-size: 1.5em;
-            padding: 20px;
         }
     </style>
 </head>
@@ -56,24 +45,18 @@
     <script>
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const buttons = document.getElementById('buttons');
         const message = document.getElementById('message');
 
         yesBtn.addEventListener('click', () => {
-            buttons.style.display = 'none';
             message.style.display = 'block';
+            buttons.style.display = 'none';
         });
 
-        noBtn.addEventListener('mouseover', moveNoBtn);
-        noBtn.addEventListener('touchstart', moveNoBtn);
-
-        function moveNoBtn() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.addEventListener('mouseover', () => {
             noBtn.style.position = 'absolute';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-        }
+            noBtn.style.left = Math.random() * 90 + "%";
+            noBtn.style.top = Math.random() * 90 + "%";
+        });
     </script>
 </body>
 </html>
