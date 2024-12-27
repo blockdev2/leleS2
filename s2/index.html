@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oi, minha princesa!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #ffe6f2;
-            font-family: 'Lucida Handwriting', cursive;
+            font-family: 'Patrick Hand', cursive;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -29,20 +30,6 @@
             padding: 20px;
             max-width: 80%;
         }
-        .arrow {
-            cursor: pointer;
-            font-size: 2em;
-            color: #ff66b2;
-            animation: bounce 1s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
         button {
             padding: 15px 30px;
             font-size: 1.5em;
@@ -51,41 +38,31 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: #ff3385;
         }
     </style>
 </head>
 <body>
     <h1 id="title">Oi, minha princesa!</h1>
     <p id="message"></p>
-    <div class="arrow" id="next">&#10132;</div>
     <button id="nextBtn" style="display: none;">Seguinte...</button>
 
     <script>
         const messages = [
             "Fiz um sitezinho simples só para dizer que você é muito especial para mim.",
-            "Passar todo esse tempo com você tem sido ótimo e espero passar muito mais tempo. Quero te ver e aproveitar muito da minha vida junto de você.",
+            "Passar todo esse tempo com você tem sido ótimo e espero passar muito mais tempo.",
             "Obrigado por ser minha companheira, sempre me entender e estar junto comigo.",
             "Te amo!"
         ];
 
         let index = 0;
-        const title = document.getElementById('title');
         const message = document.getElementById('message');
-        const next = document.getElementById('next');
         const nextBtn = document.getElementById('nextBtn');
 
-        next.addEventListener('click', () => {
+        document.body.addEventListener('click', () => {
             if (index < messages.length) {
                 message.innerText = messages[index];
                 index++;
             } else {
-                next.style.display = 'none';
                 message.innerText = "Te amo!";
                 nextBtn.style.display = 'block';
             }
