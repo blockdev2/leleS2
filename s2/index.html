@@ -51,4 +51,49 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ff3385;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Oi, minha princesa!</h1>
+    <p id="message"></p>
+    <div class="arrow" id="next">&#10132;</div>
+    <button id="nextBtn" style="display: none;">Seguinte...</button>
+
+    <script>
+        const messages = [
+            "Fiz um sitezinho simples só para dizer que você é muito especial para mim.",
+            "Passar todo esse tempo com você tem sido ótimo e espero passar muito mais tempo. Quero te ver e aproveitar muito da minha vida junto de você.",
+            "Obrigado por ser minha companheira, sempre me entender e estar junto comigo.",
+            "Te amo!"
+        ];
+
+        let index = 0;
+        const title = document.getElementById('title');
+        const message = document.getElementById('message');
+        const next = document.getElementById('next');
+        const nextBtn = document.getElementById('nextBtn');
+
+        next.addEventListener('click', () => {
+            if (index < messages.length) {
+                message.innerText = messages[index];
+                index++;
+            } else {
+                next.style.display = 'none';
+                message.innerText = "Te amo!";
+                nextBtn.style.display = 'block';
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            window.location.href = '/leleS2/cute';
+        });
+    </script>
+</body>
+</html>
